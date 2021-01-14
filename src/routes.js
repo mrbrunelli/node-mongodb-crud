@@ -1,12 +1,14 @@
 const express = require("express")
-const CapivaraHandler = require("./handlers/CapivaraHandler")
+const CapivaraHandler = require("./handlers/capivara-handler")
 
-const routes = express.Router()
+const router = express.Router()
 
-routes.get("/capivara", CapivaraHandler.index)
-routes.get("/capivara/:id", CapivaraHandler.show)
-routes.post("/capivara", CapivaraHandler.create)
-routes.put("/capivara/:id", CapivaraHandler.update)
-routes.delete("/capivara/:id", CapivaraHandler.delete)
+router.get("/", (req, res) => {
+    res.json({
+        capivaraSays: "Welcome nhm nhm nhm... Stranger!",
+        apiDoc: "https://github.com/mrbrunelli/node-mongodb-crud/blob/master/README.md"
+    })
+})
+router.use("/capivara", CapivaraHandler)
 
-module.exports = routes
+module.exports = router
